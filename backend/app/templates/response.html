@@ -13,10 +13,10 @@
   </pre>
   {% if result.status %}
     {% if result.processed %}
-      <a href="{{url_for('pdfs', path=result.processed.name)}}">Processed Pdf</a>
+      <a href="pdfs/{{result.processed.name}}">Processed Pdf</a>
     {% endif %}
     {% if result.unprocessed %}
-      <a href="{{url_for('pdfs', path=result.unprocessed.name)}}">Unprocessed Pdf</a>
+      <a href="pdfs/{{result.unprocessed.name}}">Unprocessed Pdf</a>
     {% endif %}
     Confidence: {{ result.match.confidence }}
   {% else %}

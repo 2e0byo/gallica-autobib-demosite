@@ -6,6 +6,9 @@ from gallica_autobib.pipeline import BibtexParser, RisParser
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 from pydantic import BaseModel
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class BibliographyData(BaseModel):

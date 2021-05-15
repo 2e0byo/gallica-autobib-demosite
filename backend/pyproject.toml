@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "gallica-autobib-demosite"
+version = "0.1.0"
+description = "Demosite for pygallica-autobib"
+authors = ["John Maximilian <2e0byo@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "^0.65.1"
+uvicorn = "^0.13.4"
+gallica-autobib = "^0.1.3"
+aiofiles = "^0.6.0"
+devtools = "^0.6.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+pytest-asyncio = "^0.15.1"
+pytest-sugar = "^0.9.4"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallica Autobib</title>
+    </head>
+    <body>
+        <h1>Gallica Autobib</h1>
+        <p>Enter your bibliographic data in the form below and press submit</p>
+        <form action="/api/parser" method="POST">
+            <label for="name">Name:</label>
+            <input type="text", id="name", name="name", value="Demo Bibliography"><br/>
+            <textarea name="bibdata" id="bibdata" rows="40" cols="70">
+@Article{garrigou-lagrange21:_la,
+author =       {Réginald Garrigou-Lagrange},
+title =        {La perfection de la charité},
+journaltitle = {La Vie spirituelle},
+year =      1921,
+language =  {french},
+volume =    2,
+pages =     {1--20}}
+
+
+@Article{chenu21:_de,
+author =       {M.-D. Chenu},
+title =        {De l'oraison},
+journaltitle = {La Vie spirituelle},
+year =      1921,
+language =  {french},
+pages =     {219--28}}
+
+@Article{chenu23:_asces,
+author =       {M.-D. Chenu},
+title =        {Ascèse et péché},
+journaltitle = {La Vie spirituelle},
+year =      1923,
+language =  {french},
+volume =    7,
+pages =     {547--51}}
+
+@Article{chenu23:_aux,
+author =       {M.-D. Chenu},
+title =        {Aux incroyants},
+journaltitle = {La Vie spirituelle},
+year =      1923,
+language =  {french},
+number =    9,
+pages =     {93--5}}
+            </textarea><br />
+            <input type="radio" id="bibtex", name="bibtype", value="bibtex", checked="checked">
+            <label for="bibtex">Bibtex</label><br/>
+            <input type="radio" id="ris", name="bibtype", value="bibtex">
+            <label for="ris">Ris</label><br/>
+            <input type="submit" value="submit"/>
+        </form>
+    </body>
+</html>

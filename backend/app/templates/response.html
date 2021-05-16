@@ -1,27 +1,83 @@
-<html>
-  <head>
-    <title>Gallica Autobib Report</title>
-  </head>
-</body>
-<h1>Gallica Autobib Report: {{name}} </title>
-{% for result in obj.results %}
-  <h2>{{result.record.target.name()}}</h2>
-  <pre>
-    <code>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <!-- Basic Page Needs
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta charset="utf-8">
+        <title>Gallica Autobib Report</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Mobile Specific Metas
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- FONT
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+        <!-- CSS
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="../../static/css/normalize.css">
+        <link rel="stylesheet" href="../../static/css/skeleton.css">
+        <style>
+         html, body {
+             height: 100%;
+         }
+
+         .table-container {
+             display: table;
+             height: 100%;
+             width: 100%;
+         }
+
+         .table-block {
+             display: table-row;
+             height: 1px;
+         }
+
+         .footer-push {
+             height: auto;
+         }
+
+         #footer {
+             /* Placeholder footer styles */
+             text-align: center;
+         }
+         textarea.u-full-height {
+             height: 100vh;
+         }
+
+        </style>
+
+        <!-- Favicon
+             –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="icon" type="image/png" href="images/favicon.png">
+    </head>
+    <body>
+        <h1>Gallica Autobib Report: {{name}} </title>
+            {% for result in obj.results %}
+            <h2>{{result.record.target.name()}}</h2>
+            <pre>
+                <code>
 {{result.record.raw}}
-    </code>
-  </pre>
-  {% if result.status %}
-    {% if result.processed %}
-      <a href="../pdfs/{{result.processed.name}}">Processed Pdf</a>
-    {% endif %}
-    {% if result.unprocessed %}
-      <a href="../pdfs/{{result.unprocessed.name}}">Unprocessed Pdf</a>
-    {% endif %}
-    Confidence: {{ result.match.confidence }}
-  {% else %}
-    Unable to download pdf :(
-  {% endif %}
-{% endfor %}
-</body>
+                </code>
+            </pre>
+            {% if result.status %}
+            {% if result.processed %}
+            <a href="../pdfs/{{result.processed.name}}">Processed Pdf</a>
+            {% endif %}
+            {% if result.unprocessed %}
+            <a href="../pdfs/{{result.unprocessed.name}}">Unprocessed Pdf</a>
+            {% endif %}
+            Confidence: {{ result.match.confidence }}
+            {% else %}
+            Unable to download pdf :(
+            {% endif %}
+            {% endfor %}
+
+            <footer>
+                <p> Produced with <a href="https://github.com/2e0byo/pygallica-autobib">Gallica Autobib</a> </p>
+    </body>
 </html>

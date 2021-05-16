@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from gallica_autobib.pipeline import BibtexParser, RisParser
@@ -19,6 +19,7 @@ class BibliographyData(BaseModel):
 app = FastAPI()
 
 app.mount("/pdfs", StaticFiles(directory="pdfs"), name="pdfs")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
@@ -28,9 +29,14 @@ with Path("static/index.html").open() as f:
     index = f.read()
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/")
 async def root():
-    return index
+    return RedirectResponse("/static/index.html")
+
+
+# @app.get("/", response_class=HTMLResponse)
+# async def root():
+#     return index
 
 
 @app.post("/api/parser", response_class=HTMLResponse)
